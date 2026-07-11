@@ -6,7 +6,7 @@ echo "Building APK..."
 echo "Pushing APK..."
 adb root
 adb remount
-adb push app/build/outputs/apk/debug/app-debug.apk /system_ext/priv-app/CarSystemUI/CarSystemUI.apk
+adb push app/build/outputs/apk/debug/app-debug.apk /system_ext/priv-app/CarSystemUI/CarSystemUI.apk # or release you can switch :)
 echo "Restarting SystemUI..."
 adb shell killall com.android.systemui || true
 echo "Done!"
