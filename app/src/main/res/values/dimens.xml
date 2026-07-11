@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="car_top_system_bar_height">100dp</dimen>
+    <dimen name="car_bottom_system_bar_height">100dp</dimen>
+    <dimen name="car_left_system_bar_width">100dp</dimen>
+    <dimen name="car_right_system_bar_width">100dp</dimen>
+</resources>

@@ -5,11 +5,7 @@ plugins {
 
 android {
     namespace = "com.hpnightowl.systemui"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.hpnightowl.systemui"
@@ -21,8 +17,21 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("platform") {
+            storeFile = file("../platform.jks")
+            storePassword = "android"
+            keyAlias = "platform"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("platform")
+        }
         release {
+            signingConfig = signingConfigs.getByName("platform")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -40,6 +49,9 @@ android {
 }
 
 dependencies {
+    compileOnly(files("libs/android_patched.jar"))
+    implementation(files("libs/insets_helper.jar"))
+    
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)

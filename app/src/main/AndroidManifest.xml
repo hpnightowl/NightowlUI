@@ -1,27 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    coreApp="true"
+    package="com.hpnightowl.systemui"
+    android:sharedUserId="android.uid.systemui">
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.STATUS_BAR_SERVICE" />
+    <uses-permission android:name="android.permission.STATUS_BAR" />
 
     <application
-        android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
+        android:name=".SystemUIApp"
+        android:allowBackup="false"
+        android:directBootAware="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="OwlUI"
+        android:persistent="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Systemui">
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Systemui">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <service
+            android:name=".service.SystemUIService"
+            android:exported="true" />
     </application>
-
 </manifest>
