@@ -1,4 +1,4 @@
-# Nightowl Custom SystemUI
+# Nightowl Custom SystemUI Sample
 
 SystemUI built entirely with Jetpack Compose and a Clean MVVM architecture at least a Start :P.
 
@@ -7,7 +7,10 @@ standalone Gradle project.
 
 ## Demo
 
-![Native Insets & UI Restricting bounds](docs/insets_all.png)
+![Native Insets & UI Restricting bounds](docs/demo0.png)
+![Native Insets & UI Restricting bounds](docs/demo1.png)
+![Native Insets & UI Restricting bounds](docs/demo2.png)
+![Native Insets & UI Restricting bounds](docs/demo3.png)
 
 ## AOSP Integration Guide
 
