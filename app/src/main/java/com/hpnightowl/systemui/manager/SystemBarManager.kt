@@ -2,7 +2,9 @@ package com.hpnightowl.systemui.manager
 
 import android.content.Context
 import android.hardware.display.DisplayManager
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.hpnightowl.systemui.model.BarConfig
 import com.hpnightowl.systemui.ui.controller.DisplayWindowController
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,6 +19,7 @@ class SystemBarManager(private val context: Context) : DisplayManager.DisplayLis
     private val _barConfigs = MutableStateFlow<Map<Int, BarConfig>>(emptyMap())
     val barConfigs: StateFlow<Map<Int, BarConfig>> = _barConfigs.asStateFlow()
 
+    @RequiresApi(Build.VERSION_CODES.S)
     fun start() {
         displayManager.registerDisplayListener(this, null)
         // Initialize for all currently connected displays
@@ -31,6 +34,7 @@ class SystemBarManager(private val context: Context) : DisplayManager.DisplayLis
         displayControllers.clear()
     }
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onDisplayAdded(displayId: Int) {
         val display = displayManager.getDisplay(displayId) ?: return
         Log.d("SystemBarManager", "Display added: $displayId")
